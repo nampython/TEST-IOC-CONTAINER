@@ -32,7 +32,5 @@ public class QualifierBeanTest implements Test {
 
         Assert.isNull("Inject with invalid qualifier null", wrongQualifierCommonBean, "Invalid Injection!");
         Assert.isNull("Inject with invalid qualifier null", wrongBeanService, "Invalid Injection!");
-
-
     }
 }
