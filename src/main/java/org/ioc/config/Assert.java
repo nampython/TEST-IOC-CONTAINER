@@ -20,4 +20,8 @@ public class Assert {
     public static void isNull(String testing, Object o, String msg) {
         Assert.that(testing, o == null, msg);
     }
+
+    public static void notNull(String testing, Object o, String msg) {
+        Assert.that(testing, o != null, msg);
+    }
 }
