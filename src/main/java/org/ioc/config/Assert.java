@@ -21,6 +21,15 @@ public class Assert {
         Assert.that(testing, o == null, msg);
     }
 
+    public static void notEqual(String testing, Object o1, Object o2, String msg) {
+        boolean notEqual = !o1.equals(o2);
+
+        if (!notEqual) {
+            msg += String.format("Expected different value than: '%s'", o1);
+        }
+
+        Assert.that(testing, notEqual, msg);
+    }
     public static void notNull(String testing, Object o, String msg) {
         Assert.that(testing, o != null, msg);
     }
