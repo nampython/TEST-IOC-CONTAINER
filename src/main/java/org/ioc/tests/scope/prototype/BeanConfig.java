@@ -1,12 +1,9 @@
 package org.ioc.tests.scope.prototype;
 
 import org.ioc.engine.ScopeType;
-import org.ioc.stereotype.Bean;
-import org.ioc.stereotype.Configuration;
-import org.ioc.stereotype.NamedInstance;
-import org.ioc.stereotype.Scope;
+import org.ioc.stereotype.*;
 
-@Configuration
+@Service
 public class BeanConfig {
 
     @Bean
