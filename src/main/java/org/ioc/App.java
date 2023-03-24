@@ -1,18 +1,24 @@
 package org.ioc;
 
 import org.ioc.config.Test;
+import org.ioc.configuration.Configuration;
 import org.ioc.contex.ApplicationContext;
 import org.ioc.engine.ComponentModel;
 import org.ioc.stereotype.Component;
 import org.ioc.stereotype.StartUp;
-import org.ioc.tests.bean.BeanInterface;
+import org.ioc.tests.customannotations.CustomComponent;
+import org.ioc.tests.scope.prototype.PrototypeBean;
 
 @Component
 public class App {
     public static ApplicationContext applicationContext;
 
     public static void main(String[] arg) {
-        InitApplicationContext.run(App.class);
+        Configuration configs = new Configuration()
+                .scanning()
+                .addComponentAnnotation(CustomComponent.class)
+                .and();
+        InitApplicationContext.run(App.class, configs);
     }
 
     @StartUp
