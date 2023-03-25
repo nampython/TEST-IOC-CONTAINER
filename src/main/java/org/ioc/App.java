@@ -10,7 +10,6 @@ import org.ioc.stereotype.StartUp;
 import org.ioc.tests.customannotations.CustomComponent;
 import org.ioc.tests.resolver.Producers.StringConfigProducer;
 import org.ioc.tests.resolver.Producers.StringConfigProducerTwo;
-import org.ioc.tests.scope.prototype.PrototypeBean;
 
 @Component
 public class App {
