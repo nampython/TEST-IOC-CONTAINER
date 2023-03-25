@@ -1,12 +1,14 @@
-package org.ioc.tests.scope.prototype;
+package org.ioc.tests.scopes.beans;
 
-public class PrototypeBean2 implements PrototypeBean {
+
+public class PrototypeScopeBean2 implements PrototypeScopeBean {
+
     private static int id = 55;
 
     private int instanceId;
 
 
-    public PrototypeBean2() {
+    public PrototypeScopeBean2() {
         this.instanceId = ++id;
     }
 
