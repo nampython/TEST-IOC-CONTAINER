@@ -4,6 +4,7 @@ import org.ioc.config.Test;
 import org.ioc.configuration.Configuration;
 import org.ioc.contex.ApplicationContext;
 import org.ioc.engine.ComponentModel;
+import org.ioc.events.CustomScopeEventHandler;
 import org.ioc.stereotype.Component;
 import org.ioc.stereotype.StartUp;
 import org.ioc.tests.customannotations.CustomComponent;
@@ -22,6 +23,7 @@ public class App {
                 .addDependencyResolver(new StringConfigProducerTwo())
                 .and()
                 .scanning()
+                .addComponentDetailsCreatedCallback(new CustomScopeEventHandler())
                 .addComponentAnnotation(CustomComponent.class)
                 .and();
         InitApplicationContext.run(App.class, configs);
