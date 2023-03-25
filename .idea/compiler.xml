@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Test-IocContainer" />
+        <module name="TEST-IOC-CONTAINER" />
       </profile>
     </annotationProcessing>
   </component>
