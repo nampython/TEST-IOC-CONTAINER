@@ -3,8 +3,10 @@ package org.ioc;
 import org.ioc.config.Test;
 import org.ioc.configuration.Configuration;
 import org.ioc.contex.ApplicationContext;
+import org.ioc.deps.CircDepTestService;
 import org.ioc.engine.ComponentModel;
 import org.ioc.events.CustomScopeEventHandler;
+import org.ioc.exception.CircularDependencyException;
 import org.ioc.stereotype.Component;
 import org.ioc.stereotype.StartUp;
 import org.ioc.tests.customannotations.CustomComponent;
@@ -26,6 +28,8 @@ public class App {
                 .addComponentAnnotation(CustomComponent.class)
                 .and();
         InitApplicationContext.run(App.class, configs);
+        runCircularDependencyTest(configs);
+
     }
 
     @StartUp
@@ -43,5 +47,17 @@ public class App {
         System.out.println("Running tests from: " + componentModel.getComponentType().getName());
         instance.runTest();
         System.out.println("\n");
+    }
+    private static void runCircularDependencyTest(Configuration config) {
+        System.out.println("Running Circular dependency test");
+
+        config.scanning().addComponentAnnotation(CircDepTestService.class);
+
+        try {
+            InitApplicationContext.run(App.class, config);
+        } catch (CircularDependencyException ex) {
+            System.out.println("Test passed successfully!!!");
+            System.out.println(ex.getMessage());
+        }
     }
 }
