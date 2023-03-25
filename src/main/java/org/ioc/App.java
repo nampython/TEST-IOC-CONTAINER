@@ -7,6 +7,8 @@ import org.ioc.engine.ComponentModel;
 import org.ioc.stereotype.Component;
 import org.ioc.stereotype.StartUp;
 import org.ioc.tests.customannotations.CustomComponent;
+import org.ioc.tests.resolver.Producers.StringConfigProducer;
+import org.ioc.tests.resolver.Producers.StringConfigProducerTwo;
 import org.ioc.tests.scope.prototype.PrototypeBean;
 
 @Component
@@ -15,6 +17,10 @@ public class App {
 
     public static void main(String[] arg) {
         Configuration configs = new Configuration()
+                .instantiations()
+                .addDependencyResolver(new StringConfigProducer())
+                .addDependencyResolver(new StringConfigProducerTwo())
+                .and()
                 .scanning()
                 .addComponentAnnotation(CustomComponent.class)
                 .and();
